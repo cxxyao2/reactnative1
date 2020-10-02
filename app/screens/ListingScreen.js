@@ -1,40 +1,40 @@
 import React ,{useState, useEffect } from 'react';
-import {  StyleSheet, FlatList } from 'react-native';
+import { StyleSheet, Text, Button,FlatList } from "react-native";
 
 import Screen from "../components/Screen";
-import Card from "../components/Card";
+
 import colors from "../config/colors";
-import routes from "../navigation/routes";
+import Card from "../components/Card";
 
-
-import listingsApi from "../api/listings";
-import AppButton from '../components/AppButton';
+const listings = [
+  {
+    id: 201,
+    title: "Red jacket",
+    price: 1000,
+    categoryId: 5,
+    userId: 1,
+    images: [{ url: "http://192.168.1.5:9000/assets/shoes1_full.jpg" }],
+  },
+  {
+    id: 202,
+    title: "couch",
+    price: 100,
+    categoryId: 5,
+    userId: 1,
+    images: [{ url: "http://192.168.1.5:9000/assets/couch2_full.jpg" }],
+  },
+];
 
 function ListingScreen({ navigation }) {
-  const [listings, setListings] = useState([]);
-  const [error, setError ] = useState[false];
 
-
-  useEffect(()=> {
-    loadListings();
-  },[]);
-
-  const loadListings = async () => {
-    const response = await listingsApi.getListings();
-    if (!response.ok)  return  setError(true);
-    
-    setError(false);
-    setListings(response.data);
-  }
-
+ 
   return (
     <Screen style={styles.screen}>
-      {error && (
-        <>
-          <AppText>Could not get data</AppText>
-          <AppButton title="Retry" onPress={loadListings} />
-        </>
-      )}
+      <Button
+        title="clickMe"
+        onPress={() => console.log("hi,wlrod ", listings)}
+      />
+      <Text>hello world2</Text>
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -44,7 +44,7 @@ function ListingScreen({ navigation }) {
             subTitle={"$" + item.price}
             imageUrl={item.images[0].url}
             onPress={() => {
-              navigation.navigate(routes.LISTING_DETAILS, item);
+             console.log("hi,item... ", item);
             }}
           />
         )}
