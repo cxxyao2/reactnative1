@@ -5,6 +5,8 @@ import Screen from "../components/Screen";
 
 import colors from "../config/colors";
 import Card from "../components/Card";
+import listingsApi from "../api/listings";
+import routes from "../navigation/routes" ;
 
 const listings = [
   {
@@ -27,12 +29,13 @@ const listings = [
 
 function ListingScreen({ navigation }) {
 
- 
+
+
   return (
     <Screen style={styles.screen}>
       <Button
         title="clickMe"
-        onPress={() => console.log("hi,wlrod ", listings)}
+        onPress={() => console.log("hi,world ", listings)}
       />
       <Text>hello world2</Text>
       <FlatList
@@ -44,7 +47,7 @@ function ListingScreen({ navigation }) {
             subTitle={"$" + item.price}
             imageUrl={item.images[0].url}
             onPress={() => {
-             console.log("hi,item... ", item);
+              navigation.navigate(routes.LISTING_DETAILS, item);
             }}
           />
         )}
