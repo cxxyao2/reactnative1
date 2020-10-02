@@ -1,5 +1,5 @@
 import React ,{useState, useEffect } from 'react';
-import { StyleSheet, Text, Button,FlatList } from "react-native";
+import { StyleSheet, Text, FlatList } from "react-native";
 
 import Screen from "../components/Screen";
 
@@ -7,6 +7,10 @@ import colors from "../config/colors";
 import Card from "../components/Card";
 import listingsApi from "../api/listings";
 import routes from "../navigation/routes" ;
+import AppText from '../../dumped/AppText/AppText.android';
+import AppButton from '../components/AppButton';
+import ActivityIndicator from "../components/ActivityIndicator";
+import useApi from "../hooks/useApi";
 
 const listings = [
   {
@@ -28,28 +32,40 @@ const listings = [
 ];
 
 function ListingScreen({ navigation }) {
-  const [animal, setAnimal] = useState([]);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const request = async () => {
+    setLoading(true);
+    const response = await listingsApi.getListings(1,2,3)
+
+    setLoading(false);
+    if (!response.ok) return setError(true);
+    setError(false);
+    setData(response.data);
+  };
+
+
 
   useEffect(()=>{
-    loadListings();
-    console.log('hi,imtes', listings);
-     console.log("hi,animals ", animal);
+    request();
+    console.log('hi,listings', listings);
+    console.log("hi,data from server ", data);
   }, []);
 
-  const loadListings = async() => {
-    const response = await listingsApi.getListings();
-    setAnimal(response.data);
-  }
-
+ 
   return (
     <Screen style={styles.screen}>
-      <Button
-        title="clickMe"
-        onPress={() => console.log("hi,world ", listings)}
-      />
-
+      {error && (
+        <>
+          <AppText>Couldn't get data</AppText>
+          <AppButton title="Retry" onPress={loadListings} />
+        </>
+      )}
+      <ActivityIndicator visible={loading} />
       <FlatList
-        data={animal}
+        data={data}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card

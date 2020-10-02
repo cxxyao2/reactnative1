@@ -38,8 +38,14 @@ Android emulator errors:
 1,System UI isn"t  responding.  close app or wait?
 answer: android manager-cold start- delete data----etc.
 
+
+6, expo install lottie-react-native
+ animation
+
 others:
 1, Context: https://reactjs.org/docs/context.html
 2, hooks: https://reactjs.org/docs/hooks-intro.html
 3,reactnative: https://reactnative.dev/docs/textinput#textcontenttype 
+4,lottiefiles.com
+animaion icons .
 
