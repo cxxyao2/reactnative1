@@ -28,8 +28,18 @@ const listings = [
 ];
 
 function ListingScreen({ navigation }) {
+  const [animal, setAnimal] = useState([]);
 
+  useEffect(()=>{
+    loadListings();
+    console.log('hi,imtes', listings);
+     console.log("hi,animals ", animal);
+  }, []);
 
+  const loadListings = async() => {
+    const response = await listingsApi.getListings();
+    setAnimal(response.data);
+  }
 
   return (
     <Screen style={styles.screen}>
@@ -37,9 +47,9 @@ function ListingScreen({ navigation }) {
         title="clickMe"
         onPress={() => console.log("hi,world ", listings)}
       />
-      <Text>hello world2</Text>
+
       <FlatList
-        data={listings}
+        data={animal}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
           <Card
