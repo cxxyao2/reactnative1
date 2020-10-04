@@ -1,4 +1,4 @@
-import React ,{useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, FlatList } from "react-native";
 
 import Screen from "../components/Screen";
@@ -6,9 +6,9 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import Card from "../components/Card";
 import listingsApi from "../api/listings";
-import routes from "../navigation/routes" ;
-import AppText from '../../dumped/AppText/AppText.android';
-import AppButton from '../components/AppButton';
+import routes from "../navigation/routes";
+import AppText from "../../dumped/AppText/AppText.android";
+import AppButton from "../components/AppButton";
 import ActivityIndicator from "../components/ActivityIndicator";
 import useApi from "../hooks/useApi";
 
@@ -38,7 +38,7 @@ function ListingScreen({ navigation }) {
 
   const request = async () => {
     setLoading(true);
-    const response = await listingsApi.getListings(1,2,3)
+    const response = await listingsApi.getListings(1, 2, 3);
 
     setLoading(false);
     if (!response.ok) return setError(true);
@@ -46,21 +46,18 @@ function ListingScreen({ navigation }) {
     setData(response.data);
   };
 
-
-
-  useEffect(()=>{
+  useEffect(() => {
     request();
-    console.log('hi,listings', listings);
+    console.log("hi,listings", listings);
     console.log("hi,data from server ", data);
   }, []);
 
- 
   return (
     <Screen style={styles.screen}>
       {error && (
         <>
           <AppText>Couldn't get data</AppText>
-          <AppButton title="Retry" onPress={loadListings} />
+          <AppButton title="Retry" onPress={request} />
         </>
       )}
       <ActivityIndicator visible={loading} />
@@ -83,10 +80,10 @@ function ListingScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-screen: {
-   padding: 20,
-   backgroundColor: colors.light,
-}
+  screen: {
+    padding: 20,
+    backgroundColor: colors.light,
+  },
 });
 
 export default ListingScreen;

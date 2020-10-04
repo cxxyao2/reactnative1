@@ -34,6 +34,10 @@ npm i apisauce
 
 5, react native debugger, --3 in 1,,including chrome,redux
 
+6, progress bar :
+github.com/oblador/react-native-progessbar
+npm install react-native-progress --save
+
 Android emulator errors:
 1,System UI isn"t  responding.  close app or wait?
 answer: android manager-cold start- delete data----etc.

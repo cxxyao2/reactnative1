@@ -16,7 +16,7 @@ const menuItems = [
       name: "format-list-bulleted",
       backgroundColor: colors.primary,
     },
-    targetScreen: "Listings",
+    targetScreen: "Listing",
   },
   {
     title: "My Messages",
