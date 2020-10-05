@@ -6,15 +6,8 @@ import colors from "../config/colors";
 import ListItem from "../components/ListItem";
 
 function ListingDetailsScreen({ route}) {
-  // const listing = route.params; todojane
-  const listing = {
-    id: 201,
-    title: "Red jacket",
-    price: 100,
-    categoryId: 5,
-    userId: 1,
-    images: [{url: "http://192.168.1.5:9000/assets/couch2_full.jpg"}],
-  };
+   const listing = route.params; 
+ 
 
   return (
     <View style={styles.container}>

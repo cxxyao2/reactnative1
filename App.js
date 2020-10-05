@@ -1,38 +1,44 @@
 import React from "react";
+import NetInfo, { useNetInfo } from "@react-native-community/netinfo";
+import AsyncStorage from "@react-native-community/async-storage";
 
-import { View ,StyleSheet} from "react-native";
+import { View ,StyleSheet, Text} from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 
-
 import AppNavigator from "./app/navigation/AppNavigator";
 import navigationTheme from "./app/navigation/navigationTheme";
-import  LottieView  from "lottie-react-native";
+import OffNotice from "./app/components/OffNotice";
 
-  const onDone =() => {console.log("i am animations")};
-  
-  export default function App() {
+
+
+
+export default function App() {
   return (
-     <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
-    </NavigationContainer> 
-   /*  <View>
-      <LottieView
-        autoPlay
-        loop={false}
-        onAnimationFinish={onDone}
-        style={styles.animation}
-        source={require("./app/assets/animations/done.json")}
-      />
-    </View> */
+    <>
+      <OffNotice />
+      <NavigationContainer theme={navigationTheme}>
+        <AppNavigator />
+      </NavigationContainer>
+    </>
   );
-}   
+} 
+    /*  const demo = async () => {
+      try {
+             <OfflineNotice />
+        await AsyncStorage.setItem("person", JSON.stringify({ id: 5, name: "Jeffry"}));
+        const value = await AsyncStorage.getItem("person");
+        const person = JSON.parse(value);
+        console.log(person);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    demo();
+    return null; */
+ 
 
-const styles = StyleSheet.create({
-  animation: {
-   width: 100,
-  },
-}); 
+
 
 
 

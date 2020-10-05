@@ -42,9 +42,29 @@ Android emulator errors:
 1,System UI isn"t  responding.  close app or wait?
 answer: android manager-cold start- delete data----etc.
 
-
 6, expo install lottie-react-native
  animation
+
+
+7, offline process , detecting network status ,
+expo install @react-native-community/netinfo
+default: only once
+import NetInfo from "@react-native-community/netinfo";
+NetInfo.fetch().then((netInfo) => console.log(netInfo))
+
+8, caching,
+asyncstorage:  not encrypted, au maximum 6M, 
+securestore: developed by expo group. 2m
+SQlite: can use queries.
+
+9, moment, 
+npm i moment
+
+
+10, react-native-expo-image-cache for image cache + progressive loading.
+
+npm i react-native-expo-image-cache
+expo install expo-blur
 
 others:
 1, Context: https://reactjs.org/docs/context.html
