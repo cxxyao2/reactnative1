@@ -25,6 +25,9 @@ npm install @react-navigation/native
 
 expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
 
+
+
+
 3 types of navigators: stack/tab/drawer
 npm install @react-navigation/stack
 npm install @react-navigation/bottom-tabs
@@ -65,6 +68,14 @@ npm i moment
 
 npm i react-native-expo-image-cache
 expo install expo-blur
+
+
+11, encode, decode,
+npm i jwt-decode
+
+
+12, persisting the Authenticaiton State Across Restarts
+expo install expo-secure-store 
 
 others:
 1, Context: https://reactjs.org/docs/context.html
