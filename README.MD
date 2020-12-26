@@ -4,8 +4,8 @@ In this course, you learn how to build UI components from scratch because that's
 
 Here are the top three UI toolkits for React Native:
 
-# React Native Elements (My Recommendation): https://react-native-elements.github.io/react-native-elements/
+* React Native Elements (My Recommendation): https://react-native-elements.github.io/react-native-elements/
 
-React Native Paper: https://callstack.github.io/react-native-paper/
+* React Native Paper: https://callstack.github.io/react-native-paper/
 
-Native Base: https://nativebase.io/
+* Native Base: https://nativebase.io/
